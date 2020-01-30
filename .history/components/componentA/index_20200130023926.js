@@ -10,7 +10,7 @@ class Emitter extends Component {
 
   componentDidMount() {}
 
-  _emitEvent = () => {
+  _emitEvent() {
     console.log("TRYING TO EMIT FROM COMPONENT A");
     this.eventEmitter.emit("PLAYAUDIO");
   }
