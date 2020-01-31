@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity, StyleSheet, NativeEventEmitter, NativeModules } from "react-native";
-import { EventRegister } from 'react-native-event-listeners'
-
+const { ModuleWithEmitter } = NativeModules;
 class Emitter extends Component {
   constructor(props) {
     super(props);
+    this.eventEmitter = new NativeEventEmitter(ModuleWithEmitter);
     this.state = {};
   }
 
@@ -12,7 +12,7 @@ class Emitter extends Component {
 
   _emitEvent = () => {
     console.log("TRYING TO EMIT FROM COMPONENT A");
-    EventRegister.emit("PLAYAUDIO", 'it works');
+    this.eventEmitter.emit("PLAYAUDIO");
   }
   render() {
     return (
